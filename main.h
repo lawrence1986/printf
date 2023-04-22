@@ -81,7 +81,7 @@ int print_ptr(va_list set, char buffer[],
 int fetch_flags(const char *format, int *k);
 int get_width(const char *format, int *i, va_list list);
 int get_clarity(const char *format, int *k, va_list file);
-int get_size(const char *format, int *i);
+int dataSize(const char *format, int *k);
 
 /*Function to print string in reverse*/
 int print_rev(va_list set, char buffer[],
