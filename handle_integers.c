@@ -1,6 +1,11 @@
 #include "main.h"
 
+<<<<<<< HEAD
 /** PRINT CHAR **/
+=======
+/*** PRINT CHAR ***/
+
+>>>>>>> 6f0f38015ea31f294fd4a7c37148da2b81d556e1
 /**
  * print_char - Prints a characater
  * @set: List a of arguments
@@ -18,10 +23,10 @@ int print_char(va_list set, char buffer[],
 
 return (handle_write_char(z, buffer, flags, width, precision, size));
 }
-/************************* PRINT A STRING *************************/
+/*** PRINT A STRING ***/
 /**
  * print_string - Prints a string
- * @types: List a of arguments
+ * @set: List a of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
@@ -73,10 +78,10 @@ int print_string(va_list set, char buffer[],
 
 	return (write(1, s, len));
 }
-/************************* PRINT PERCENT SIGN *************************/
+/*** PRINT PERCENT SIGN ***/
 /**
  * print_percent - Prints a percent sign
- * @types: Lista of arguments
+ * @set: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
@@ -96,10 +101,10 @@ int print_percent(va_list set, char buffer[],
 	return (write(1, "%%", 1));
 }
 
-/************************* PRINT INT *************************/
+/*** PRINT INT ***/
 /**
  * print_int - Print int
- * @types: Lista of arguments
+ * @set: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
@@ -140,10 +145,10 @@ int print_int(va_list set, char buffer[],
 	return (write_number(is_negative, i, buffer, flags, width, precision, size));
 }
 
-/************************* PRINT BINARY *************************/
+/*** PRINT BINARY ***/
 /**
  * print_binary - Prints an unsigned number
- * @types: Lista of arguments
+ * @set: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
