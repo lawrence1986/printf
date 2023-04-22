@@ -21,7 +21,7 @@ unsigned int k, ln = 0, output_chars = 0;
 
 	while (format && format[k] != '\0')
 	{
-		if (format[k != '%')
+		if (format[k] != '%')
 		{
 			buffer[buff_ind++] = format[k];
 			if (buff_ind == 1024)
@@ -39,11 +39,11 @@ unsigned int k, ln = 0, output_chars = 0;
 			precision = get_precision(format, &k, file);
 			size = get_size(format, &k);
 			++k;
-			printed = printHandler(format, &k, file, buffer,
+			ln = printHandler(format, &k, file, buffer,
 				flags, width, precision, size);
-			if (printed == -1)
+			if (ln == -1)
 				return (-1);
-			output_chars += printed;
+			output_chars += ln;
 		}
 		k++;
 	}
