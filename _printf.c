@@ -24,7 +24,7 @@ unsigned int k, ln = 0, output_chars = 0;
 		if (format[k != '%')
 		{
 			buffer[buff_ind++] = format[k];
-			if (buff_ind == BUFF_SIZE)
+			if (buff_ind == 1024)
 			{
 				print_buffer(buffer, &buff_ind);
 			}
