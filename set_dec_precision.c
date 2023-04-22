@@ -1,41 +1,46 @@
 #include "main.h"
 
 /**
- * get_precision - Calculates the precision for printing
- * @format: Formatted string in which to print the arguments
- * @i: List of arguments to be printed.
- * @list: list of arguments.
- *
- * Return: Precision.
- */
-int get_precision(const char *format, int *i, va_list list)
+* get_precision - Calculates the precision for printing
+* @format: Formatted string in which to print the arguments
+* @i: List of arguments to be printed.
+* @list: list of arguments.
+*
+* Return: Precision.
+*/
+int get_clarity(const char *format, int *k, va_list file)
 {
-	int curr_i = *i + 1;
-	int precision = -1;
+	int curr_k = *k + 1;
+	int clarity = -1;
 
-	if (format[curr_i] != '.')
-		return (precision);
+	if (format[curr_k] != '.')
+		return (clarity);
 
-	precision = 0;
+	clarity = 0;
+curr_k += 1;
 
-	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
-	{
-		if (is_digit(format[curr_i]))
-		{
-			precision *= 10;
-			precision += format[curr_i] - '0';
-		}
-		else if (format[curr_i] == '*')
-		{
-			curr_i++;
-			precision = va_arg(list, int);
-			break;
-		}
-		else
-			break;
-	}
+while (format[curr_k] != '\0')
+{
+if (is_digit(format[curr_k]))
+{
+clarity *= 10;
+clarity = clarity + format[curr_k] - '0';
+}
+else if (format[curr_k] == '*')
+{
+curr_k++;
+clarity = va_arg(file, int);
+break;
+}
+else
+{
+break;
+}
 
-	*i = curr_i - 1;
+curr_k++;
+}
 
-	return (precision);
+*k = curr_k - 1;
+
+return (clarity);
 }
