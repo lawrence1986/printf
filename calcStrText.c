@@ -1,36 +1,41 @@
 #include "main.h"
 
 /**
- * get_width - Calculates the width for printing
+ * calcStrText - Calculates the width for printing
  * @format: Formatted string in which to print the arguments.
- * @i: List of arguments to be printed.
- * @list: list of arguments.
+ * @k: List of arguments to be printed.
+ * @file: list of arguments.
  *
  * Return: width.
  */
-int get_width(const char *format, int *i, va_list list)
+int calcStrText(const char *format, int *k, va_list file)
 {
-	int curr_i;
+	int curr_k;
 	int width = 0;
+curr_k = *k + 1;
 
-	for (curr_i = *i + 1; format[curr_i] != '\0'; curr_i++)
+while (format[curr_k] != '\0')
+{
+	if (is_digit(format[curr_k]))
 	{
-		if (is_digit(format[curr_i]))
-		{
-			width *= 10;
-			width += format[curr_i] - '0';
-		}
-		else if (format[curr_i] == '*')
-		{
-			curr_i++;
-			width = va_arg(list, int);
-			break;
-		}
-		else
-			break;
+		width = width * 10;
+		width += format[curr_k] - '0';
+	}
+	else if (format[curr_k] == '*')
+	{
+		curr_k++;
+		width = va_arg(file, int);
+		break;
+	}
+	else
+	{
+		break;
 	}
 
-	*i = curr_i - 1;
+	curr_k++;
+}
 
-	return (width);
+*k = curr_k - 1;
+
+return (width);
 }
