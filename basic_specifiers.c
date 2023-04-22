@@ -1,8 +1,8 @@
 #include "main.h"
 
-/****************** PRINT POINTER ******************/
+/*** PRINT POINTER ***/
 /**
- * print_pointer - Prints the value of a pointer variable
+ * print_ptr - Prints the value of a pointer variable
  * @types: List a of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -47,14 +47,14 @@ int print_ptr(va_list set, char buffer[],
 
 	ind++;
 
-	/*return (write(1, &buffer[i], BUFF_SIZE - i - 1));*/
+	/*return (write(1, &buffer[k], BUFF_SIZE - k - 1));*/
 	return (write_pointer(buffer, ind, len,
 		width, flags, padd, extra_d, padd_start));
 }
 
-/************************* PRINT NON PRINTABLE *************************/
+/*** PRINT NON PRINTABLE ***/
 /**
- * print_non_printable - Prints ascii codes in hexa of non printable chars
+ * print_legible- Prints ascii codes in hexa of non printable chars
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -91,10 +91,9 @@ int print_legible(va_list set, char buffer[],
 
 	return (write(1, buffer, k + offset));
 }
-
-/************************* PRINT REVERSE *************************/
+/*** PRINT REVERSE ***/
 /**
- * print_reverse - Prints reverse string.
+ * print_rev - Prints reverse string.
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
@@ -135,9 +134,9 @@ int print_rev(va_list set, char buffer[],
 	}
 	return (figure);
 }
-/************************* PRINT A STRING IN ROT13 *************************/
+/*** PRINT A STRING IN ROT13 ***/
 /**
- * print_rot13string - Print a string in rot13.
+ * print_rot13str - Print a string in rot13.
  * @types: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
