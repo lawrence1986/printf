@@ -1,8 +1,8 @@
 #include "main.h"
 /**
-* get_flags - Calculates active flags
+* fetch_flags - Calculates active flags
 * @format: Formatted string in which to print the arguments
-* @i: take a parameter.
+* @k: take a parameter.
 * Return: Flags:
 */
 int fetch_flags(const char *format, int *k)
