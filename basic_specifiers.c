@@ -3,7 +3,7 @@
 /*** PRINT POINTER ***/
 /**
  * print_ptr - Prints the value of a pointer variable
- * @types: List a of arguments
+ * @set: List a of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
@@ -55,7 +55,7 @@ int print_ptr(va_list set, char buffer[],
 /*** PRINT NON PRINTABLE ***/
 /**
  * print_legible- Prints ascii codes in hexa of non printable chars
- * @types: Lista of arguments
+ * @set: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
@@ -94,7 +94,7 @@ int print_legible(va_list set, char buffer[],
 /*** PRINT REVERSE ***/
 /**
  * print_rev - Prints reverse string.
- * @types: Lista of arguments
+ * @set: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
@@ -137,7 +137,7 @@ int print_rev(va_list set, char buffer[],
 /*** PRINT A STRING IN ROT13 ***/
 /**
  * print_rot13str - Print a string in rot13.
- * @types: Lista of arguments
+ * @set: Lista of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width
