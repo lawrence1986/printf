@@ -185,7 +185,8 @@ if (width > len)
 	}
 	buffer[k] = '\0';
 
-	if (flags & F_MINUS) {
+	if (flags & F_MINUS) 
+	{
 	/* Assign extra char to left of buffer [buffer>padd] */
 	return (write(1, &buffer[ind], len) + write(1, &buffer[0], k));
 	}
