@@ -92,7 +92,7 @@ int process_output(char d, char buffer[],
 	int flags, int width, int prec,
 	int len, char padding_value, char extra_d)
 {
-	int k, padding_value_start = 1;
+	int k = 1, padding_value_start = 1;
 
 	if (prec == 0 && ind == 1024 - 2 && buffer[ind] == '0' && width == 0)
 	return (0);
@@ -110,7 +110,7 @@ int process_output(char d, char buffer[],
 	if (width > len)
 	{
 	for (k = 1; k < width - len + 1; k++)
-	buffer[k] = padding_value;
+		buffer[k] = padding_value;
 	buffer[k] = '\0';
 	if (flags & F_MINUS && padding_value == ' ')
 	if (extra_d)
@@ -120,14 +120,16 @@ int process_output(char d, char buffer[],
 	else if (!(flags & F_MINUS) && padding_value == ' ')
 	{
 	if (extra_d)
-	buffer[--ind] = extra_d;
+		buffer[--ind] = extra_d;
 	return (write(1, &buffer[1], k - 1) + write(1, &buffer[ind], len));
 	}
 	else if (!(flags & F_MINUS) && padding_value == '0')
+	{
 	if (extra_d)
 	buffer[--padding_value_start] = extra_d;
 	return (write(1, &buffer[padding_value_start], k - padding_value_start) +
 	write(1, &buffer[ind], len - (1 - padding_value_start)));
+	}
 
 	if (extra_d)
 	buffer[--ind] = extra_d;
@@ -213,29 +215,33 @@ return (write(1, &buffer[ind], len));
 		}
 		buffer[k] = '\0';
 
-		if (flags & F_MINUS && padding_value == ' ')
-			buffer[--ind] = 'x';
-			buffer[--ind] = '0';
-			if (extra_d)
-			{
-				buffer[--ind] = extra_d;
+	if (flags & F_MINUS && padding_value == ' ')
+	{
+		buffer[--ind] = 'x';
+		buffer[--ind] = '0';
+		if (extra_d)
+		{
+			buffer[--ind] = extra_d;
 			return (write(1, &buffer[ind], len) + write(1, &buffer[3], k - 3));
-			}
+	}
 		else if (!(flags & F_MINUS) && padding_value == ' ')
+		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
+		}
 			if (extra_d)
-			{
 				buffer[--ind] = extra_d;
 			return (write(1, &buffer[3], k - 3) + write(1, &buffer[ind], len));
-			}
+		}
 		else if (!(flags & F_MINUS) && padding_value == '0')
+		{
 			if (extra_d)
-			buffer[--padding_value_start] = extra_d;
+				buffer[--padding_value_start] = extra_d;
 			buffer[1] = '0';
 			buffer[2] = 'x';
 			return (write(1, &buffer[padding_value_start], k - padding_value_start) +
 				write(1, &buffer[ind], len - (1 - padding_value_start) - 2));
+		}
 	}
 buffer[--ind] = 'x';
 buffer[--ind] = '0';
