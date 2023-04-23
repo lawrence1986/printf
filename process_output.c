@@ -239,6 +239,6 @@ return (write(1, &buffer[ind], len));
 	}
 buffer[--ind] = 'x', buffer[--ind] = '0';
 if (extra_d)
-buffer[--ind] = extra_d;
+	buffer[--ind] = extra_d;
 return (write(1, &buffer[ind], 1024 - ind - 1));
 }

@@ -1,6 +1,6 @@
 #include "main.h"
 
-/*** PRINT POINTER ***/
+/*** PRINT PTR ***/
 /**
  * print_ptr - Prints the value of a pointer variable
  * @set: List a of arguments

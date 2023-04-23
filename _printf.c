@@ -38,7 +38,7 @@ int _printf(const char *format, ...)
 			width = calcStrText(format, &k, file);
 			precision = get_clarity(format, &k, file);
 			size = dataSize(format, &k);
-			++k;
+			k++;
 			ln = printHandler(format, &k, file, buffer,
 				flags, width, precision, size);
 			if (ln == -1)

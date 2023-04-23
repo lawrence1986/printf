@@ -18,7 +18,7 @@ while (format[curr_k] != '\0')
 {
 	if (is_digit(format[curr_k]))
 	{
-		width = width * 10;
+		width *= 10;
 		width += format[curr_k] - '0';
 	}
 	else if (format[curr_k] == '*')
@@ -32,7 +32,6 @@ while (format[curr_k] != '\0')
 		break;
 	}
 
-	curr_k++;
 }
 
 *k = curr_k - 1;

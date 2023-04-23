@@ -15,9 +15,9 @@
 int print_char(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	char z = va_arg(set, int);
+	char d = va_arg(set, int);
 
-return (process_output(z, buffer, flags, width, precision, size));
+return (process_output(d, buffer, flags, width, precision, size));
 }
 /*** PRINT A STRING ***/
 /**
