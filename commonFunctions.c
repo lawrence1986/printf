@@ -15,9 +15,9 @@ int is_outputed(char d)
 }
 
 /**
- * append_hexa_code - Append ascci in hexadecimal code to buffer
+ * append_xd_code - Append ascci in hexadecimal code to buffer
  * @buffer: Array of chars.
- * @i: Index at which to start appending.
+ * @k: Index at which to start appending.
  * @ascii_code: ASSCI CODE.
  * Return: Always 3
  */
@@ -39,7 +39,7 @@ int append_xd_code(char ascii_code, char buffer[], int k)
 
 /**
  * is_digit - Verifies if a char is a digit
- * @c: Char to be evaluated
+ * @d: Char to be evaluated
  *
  * Return: 1 if c is a digit, 0 otherwise
  */
