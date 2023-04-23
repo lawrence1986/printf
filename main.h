@@ -38,7 +38,7 @@ struct fmt
 typedef struct fmt fmt_t;
 
 int _printf(const char *format, ...);
-int printHandler(const char *fmt, int *k,
+int printHandler(const char *fmt, int *i,
 va_list file, char buffer[], int flags, int width, int precision, int size);
 
 /****************** FUNCTIONS ******************/
@@ -77,10 +77,10 @@ int print_ptr(va_list set, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
-int fetch_flags(const char *format, int *k);
-int calcStrText(const char *format, int *k, va_list file);
-int get_clarity(const char *format, int *k, va_list file);
-int dataSize(const char *format, int *k);
+int fetch_flags(const char *format, int *i);
+int calcStrText(const char *format, int *i, va_list file);
+int get_clarity(const char *format, int *i, va_list file);
+int dataSize(const char *format, int *i);
 
 /*Function to print string in reverse*/
 int print_rev(va_list set, char buffer[],
@@ -91,16 +91,17 @@ int print_rot13str(va_list set, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int process_output(char d, char buffer[],
+int process_output(char c, char buffer[],
 	int flags, int width, int precision, int size);
 int print_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
 int print_num(int ind, char bff[], int flags, int width, int precision,
-		int len, char padding_value, char extra_d);
+		int len, char padding_value, char extra_c);
 int write_pointer(char buffer[], int ind, int len,
 		int width, int flags, char padd, char extra_c, int padding_value_start);
 int write_pointer(char buffer[], int ind, int len,
-	int width, int flags, char padding_value, char extra_d, int padding_value_start);
+	int width, int flags,
+	char padding_value, char extra_c, int padding_value_start);
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
