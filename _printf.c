@@ -9,7 +9,7 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-	int k = 0, ln = 0, output_chars = 0;
+	int i = 0, ln = 0, output_chars = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list file;
 	char buffer[1024];
@@ -19,11 +19,11 @@ int _printf(const char *format, ...)
 
 	va_start(file, format);
 
-	while (format && format[k] != '\0')
+	while (format && format[i] != '\0')
 	{
-		if (format[k] != '%')
+		if (format[i] != '%')
 		{
-			buffer[buff_ind++] = format[k];
+			buffer[buff_ind++] = format[i];
 			if (buff_ind == 1024)
 			{
 				print_buffer(buffer, &buff_ind);
@@ -34,18 +34,18 @@ int _printf(const char *format, ...)
 		else
 		{
 			print_buffer(buffer, &buff_ind);
-			flags = fetch_flags(format, &k);
-			width = calcStrText(format, &k, file);
-			precision = get_clarity(format, &k, file);
-			size = dataSize(format, &k);
-			k++;
-			ln = printHandler(format, &k, file, buffer,
+			flags = fetch_flags(format, &i);
+			width = calcStrText(format, &i, file);
+			precision = get_clarity(format, &i, file);
+			size = dataSize(format, &i);
+			i++;
+			ln = printHandler(format, &i, file, buffer,
 				flags, width, precision, size);
 			if (ln == -1)
 				return (-1);
 			output_chars += ln;
 		}
-		k++;
+		i++;
 	}
 
 	print_buffer(buffer, &buff_ind);

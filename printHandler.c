@@ -14,18 +14,18 @@
 int printHandler(const char *fmt, int *ind, va_list file, char buffer[],
 int flags, int width, int precision, int size)
 {
-int k, unknow_len = 0, output_chars = -1;
+int i, unknow_len = 0, output_chars = -1;
 fmt_t fmt_set[] = {
-{'d', print_char}, {'s', print_string}, {'%', print_percent},
-{'k', print_int}, {'d', print_int}, {'b', print_binary},
+{'c', print_char}, {'s', print_string}, {'%', print_percent},
+{'i', print_int}, {'d', print_int}, {'b', print_binary},
 {'u', print_unt}, {'o', print_oct}, {'x', print_x},
 {'X', print_xUpper}, {'p', print_ptr}, {'S', print_legible},
 {'r', print_rev}, {'R', print_rot13str}, {'\0', NULL}
 };
-for (k = 0; fmt_set[k].fmt != '\0'; k++)
-if (fmt[*ind] == fmt_set[k].fmt)
-	return (fmt_set[k].fn(file, buffer, flags, width, precision, size));
-if (fmt_set[k].fmt == '\0')
+for (i = 0; fmt_set[i].fmt != '\0'; i++)
+if (fmt[*ind] == fmt_set[i].fmt)
+	return (fmt_set[i].fn(file, buffer, flags, width, precision, size));
+if (fmt_set[i].fmt == '\0')
 {
 if (fmt[*ind] == '\0')
 	return (-1);

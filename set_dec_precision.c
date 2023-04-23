@@ -3,32 +3,32 @@
 /**
 * get_clarity - Calculates the precision for printing
 * @format: Formatted string in which to print the arguments
-* @k: List of arguments to be printed.
+* @i: List of arguments to be printed.
 * @file: list of arguments.
 *
 * Return: Precision.
 */
-int get_clarity(const char *format, int *k, va_list file)
+int get_clarity(const char *format, int *i, va_list file)
 {
-	int curr_k = *k + 1;
+	int curr_i = *i + 1;
 	int precision = -1;
 
-	if (format[curr_k] != '.')
+	if (format[curr_i] != '.')
 		return (precision);
 
 	precision = 0;
-curr_k += 1;
+curr_i += 1;
 
-while (format[curr_k] != '\0')
+while (format[curr_i] != '\0')
 {
-if (is_digit(format[curr_k]))
+if (is_digit(format[curr_i]))
 {
 precision *= 10;
-precision = precision + format[curr_k] - '0';
+precision = precision + format[curr_i] - '0';
 }
-else if (format[curr_k] == '*')
+else if (format[curr_i] == '*')
 {
-curr_k++;
+curr_i++;
 precision = va_arg(file, int);
 break;
 }
@@ -37,10 +37,10 @@ else
 break;
 }
 
-curr_k++;
+curr_i++;
 }
 
-*k = curr_k - 1;
+*i = curr_i - 1;
 
 return (precision);
 }
