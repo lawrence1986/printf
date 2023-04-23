@@ -94,10 +94,10 @@ int print_rot13str(va_list set, char buffer[],
 /* width handler */
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
-int write_number(int is_positive, int ind, char buffer[],
+int print_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
-int write_num(int ind, char bff[], int flags, int width, int precision,
-	int length, char padd, char extra_c);
+int print_num(int ind, char bff[], int flags, int width, int precision,
+	int len, char padding_value, char extra_d);
 int write_pointer(char buffer[], int ind, int length,
 	int width, int flags, char padd, char extra_c, int padd_start);
 
