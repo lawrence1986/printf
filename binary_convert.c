@@ -127,6 +127,6 @@ if (flags & F_HASH && init_num != 0)
 {
 buffer[k--] = flag_ch;
 buffer[k--] = '0';
-}k++;
+} k++;
 return (write_unsgnd(0, k, buffer, flags, width, precision, size));
 }
