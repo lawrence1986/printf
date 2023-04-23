@@ -9,7 +9,7 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-unsigned int k, ln = 0, output_chars = 0;
+	int k, ln = 0, output_chars = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list file;
 	char buffer[1024];
@@ -34,10 +34,10 @@ unsigned int k, ln = 0, output_chars = 0;
 		else
 		{
 			print_buffer(buffer, &buff_ind);
-			flags = get_flags(format, &k);
-			width = get_width(format, &k, file);
-			precision = get_precision(format, &k, file);
-			size = get_size(format, &k);
+			flags = fetch_flags(format, &k);
+			width = calcStrText(format, &k, file);
+			precision = get_clarity(format, &k, file);
+			size = dataSize(format, &k);
 			++k;
 			ln = printHandler(format, &k, file, buffer,
 				flags, width, precision, size);

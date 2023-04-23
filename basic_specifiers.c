@@ -14,7 +14,7 @@
 int print_ptr(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	char extra_d = 0, padd = ' ';
+	char extra_d = 0, padding_value = ' ';
 	int ind = 1024 - 2, len = 2, padding_value_start = 1; /* length=2, for '0x' */
 	unsigned long num_address;
 	char map_to[] = "0123456789abcdef";
@@ -39,7 +39,7 @@ int print_ptr(va_list set, char buffer[],
 	}
 
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
-		padding_value = '0';
+		padding_value_start = '0';
 	if (flags & F_PLUS)
 		extra_d = '+', len++;
 	else if (flags & F_SPACE)
@@ -82,7 +82,7 @@ int print_legible(va_list set, char buffer[],
 		if (is_outputed(s[k]))
 			buffer[k + offset] = s[k];
 		else
-			offset += apppend_xd_code(s[k], buffer, k + offset);
+			offset += append_xd_code(s[k], buffer, k + offset);
 
 		k++;
 	}
