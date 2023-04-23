@@ -9,7 +9,7 @@ void print_buffer(char buffer[], int *buff_ind);
  */
 int _printf(const char *format, ...)
 {
-	int k, ln = 0, output_chars = 0;
+	int k = 0, ln = 0, output_chars = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list file;
 	char buffer[1024];
