@@ -82,7 +82,7 @@ int print_legible(va_list set, char buffer[],
 		if (is_printable(s[k]))
 			buffer[k + offset] = s[k];
 		else
-			offset += append_hexa_code(s[k], buffer, k + offset);
+			offset += apppend_xd_code(s[k], buffer, k + offset);
 
 		k++;
 	}
