@@ -142,7 +142,7 @@ int print_int(va_list set, char buffer[],
 
 	k++;
 
-	return (write_number(is_negative, k, buffer, flags, width, precision, size));
+	return (print_number(is_negative, k, buffer, flags, width, precision, size));
 }
 
 /*** PRINT BINARY ***/

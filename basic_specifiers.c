@@ -127,9 +127,9 @@ int print_rev(va_list set, char buffer[],
 
 	for (k = k - 1; k >= 0; k--)
 	{
-		char z = s[k];
+		char d = s[k];
 
-		write(1, &z, 1);
+		write(1, &d, 1);
 		figure++;
 	}
 	return (figure);
