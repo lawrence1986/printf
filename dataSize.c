@@ -6,17 +6,17 @@
 *
 * Return: clarity
 */
-int dataSize(const char *format, int *k)
+int dataSize(const char *format, int *i)
 {
-int curr_k = *k + 1;
+int curr_i = *i + 1;
 int size = 0;
-if (format[curr_k] == 'l')
+if (format[curr_i] == 'l')
 size = S_LONG;
-else if (format[curr_k] == 'h')
+else if (format[curr_i] == 'h')
 size = S_SHORT;
 if (size == 0)
-*k = curr_k - 1;
+*i = curr_i - 1;
 else
-*k = curr_k;
+*i = curr_i;
 return (size);
 }

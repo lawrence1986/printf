@@ -8,22 +8,22 @@
  *
  * Return: width.
  */
-int calcStrText(const char *format, int *k, va_list file)
+int calcStrText(const char *format, int *i, va_list file)
 {
-	int curr_k;
+	int curr_i;
 	int width = 0;
-curr_k = *k + 1;
+curr_i = *i + 1;
 
-while (format[curr_k] != '\0')
+while (format[curr_i] != '\0')
 {
-	if (is_digit(format[curr_k]))
+	if (is_digit(format[curr_i]))
 	{
 		width *= 10;
-		width += format[curr_k] - '0';
+		width += format[curr_i] - '0';
 	}
-	else if (format[curr_k] == '*')
+	else if (format[curr_i] == '*')
 	{
-		curr_k++;
+		curr_i++;
 		width = va_arg(file, int);
 		break;
 	}
@@ -34,7 +34,7 @@ while (format[curr_k] != '\0')
 
 }
 
-*k = curr_k - 1;
+*i = curr_i - 1;
 
 return (width);
 }
