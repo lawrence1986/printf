@@ -169,9 +169,9 @@ int process_output(char d, char buffer[],
 	padding_value = '0';
 
 	if (width > len)
-
+	{
 	int k = 0;
-
+	}
 	while (k < width - len)
 	{
 	buffer[k] = padding_value;
