@@ -92,9 +92,9 @@ int print_rot13str(va_list set, char buffer[],
 	int flags, int width, int precision, int size);
 
 /* width handler */
-int handle_write_char(char c, char buffer[],
+int process_output(char d, char buffer[],
 	int flags, int width, int precision, int size);
-int write_number(int is_positive, int ind, char buffer[],
+int print_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
 int print_num(int ind, char bff[], int flags, int width, int precision,
 		int len, char padding_value, char extra_d);
@@ -107,7 +107,7 @@ char buffer[],
 	int flags, int width, int precision, int size);
 /****************** UTILS ******************/
 int is_outputed(char);
-int append_hexa_code(char, char[], int);
+int append_xd_code(char, char[], int);
 int is_digit(char);
 
 long int convert_size_number(long int num, int size);
