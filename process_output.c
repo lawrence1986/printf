@@ -14,7 +14,7 @@
 */
 int process_output(char d, char buffer[],
 	int flags, int width, int precision, int size)
-{ /* char is stored at left and paddind at buffer's right */
+{
 	int k = 0;
 	char padding_value = ' ';
 
@@ -95,7 +95,7 @@ int process_output(char d, char buffer[],
 	int k, padding_value_start = 1;
 
 	if (prec == 0 && ind == 1024 - 2 && buffer[ind] == '0' && width == 0)
-	return (0); /* printf(".0d", 0)  no char is printed */
+	return (0);
 	if (prec == 0 && ind == 1024 - 2 && buffer[ind] == '0')
 	buffer[ind] = padding_value = ' ';
 	if (prec > 0 && prec < len)
@@ -116,17 +116,19 @@ int process_output(char d, char buffer[],
 	if (extra_d)
 	buffer[--ind] = extra_d;
 	return (write(1, &buffer[ind], len) + write(1, &buffer[1], k - 1));
+	}
 	else if (!(flags & F_MINUS) && padding_value == ' ')
-
+	{
 	if (extra_d)
 	buffer[--ind] = extra_d;
 	return (write(1, &buffer[1], k - 1) + write(1, &buffer[ind], len));
+	}
 	else if (!(flags & F_MINUS) && padding_value == '0')
 	if (extra_d)
 	buffer[--padding_value_start] = extra_d;
 	return (write(1, &buffer[padding_value_start], k - padding_value_start) +
 	write(1, &buffer[ind], len - (1 - padding_value_start)));
-	}
+
 	if (extra_d)
 	buffer[--ind] = extra_d;
 	return (write(1, &buffer[ind], len));
@@ -147,7 +149,6 @@ int process_output(char d, char buffer[],
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
-	/* The number is stored at the bufer's right and starts at position i */
 	int len = 1024 - ind - 1, k = 0;
 	char padding_value = ' ';
 
@@ -155,12 +156,11 @@ int process_output(char d, char buffer[],
 	UNUSED(size);
 
 	if (precision == 0 && ind == 1024 - 2 && buffer[ind] == '0')
-	return (0); /* printf(".0d", 0)  no char is printed */
+	return (0);
 
 	if (precision > 0 && precision < len)
-
 	padding_value = ' ';
-}
+
 	for (; precision > len; len++)
 	{
 	buffer[--ind] = '0';
@@ -169,36 +169,22 @@ int process_output(char d, char buffer[],
 	padding_value = '0';
 
 	if (width > len)
-	{
-	int k = 0;
-	}
-	while (k < width - len)
-	{
+{
+	for (k = 0; k < width - len; k++)
 	buffer[k] = padding_value;
-	k++;
-	}
 	buffer[k] = '\0';
-<<<<<<< HEAD
 
-	if (flags & F_MINUS) 
-	{
-=======
-	{
 	if (flags & F_MINUS)
-	}
->>>>>>> 343a3d53c3fc148e3b93bb8d3d230ecdf2a1edfd
-	/* Assign extra char to left of buffer [buffer>padd] */
+	{
 	return (write(1, &buffer[ind], len) + write(1, &buffer[0], k));
 	}
 	else
 	{
-	/* Assign extra char to left of padding [padd>buffer] */
 	return (write(1, &buffer[0], k) + write(1, &buffer[ind], len));
 	}
 }
-
 return (write(1, &buffer[ind], len));
-
+}
 /**
 * write_pointer - Write a memory address
 * @buffer: Arrays of chars
@@ -228,35 +214,32 @@ return (write(1, &buffer[ind], len));
 		buffer[k] = '\0';
 
 		if (flags & F_MINUS && padding_value == ' ')
-{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
 			if (extra_d)
+			{
 				buffer[--ind] = extra_d;
 			return (write(1, &buffer[ind], len) + write(1, &buffer[3], k - 3));
-		}
+			}
 		else if (!(flags & F_MINUS) && padding_value == ' ')
-		{
 			buffer[--ind] = 'x';
 			buffer[--ind] = '0';
 			if (extra_d)
+			{
 				buffer[--ind] = extra_d;
 			return (write(1, &buffer[3], k - 3) + write(1, &buffer[ind], len));
-		}
+			}
 		else if (!(flags & F_MINUS) && padding_value == '0')
-		{
 			if (extra_d)
 			buffer[--padding_value_start] = extra_d;
 			buffer[1] = '0';
 			buffer[2] = 'x';
 			return (write(1, &buffer[padding_value_start], k - padding_value_start) +
 				write(1, &buffer[ind], len - (1 - padding_value_start) - 2));
-		}
 	}
 buffer[--ind] = 'x';
 buffer[--ind] = '0';
 if (extra_d)
 buffer[--ind] = extra_d;
 return (write(1, &buffer[ind], 1024 - ind - 1));
-}
 }

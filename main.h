@@ -94,23 +94,17 @@ int print_rot13str(va_list set, char buffer[],
 /* width handler */
 int handle_write_char(char c, char buffer[],
 	int flags, int width, int precision, int size);
-int print_number(int is_positive, int ind, char buffer[],
+int write_number(int is_positive, int ind, char buffer[],
 	int flags, int width, int precision, int size);
 int print_num(int ind, char bff[], int flags, int width, int precision,
-<<<<<<< HEAD
-	int len, char padding_value, char extra_d);
-int write_pointer(char buffer[], int ind, int length,
-	int width, int flags, char padd, char extra_c, int padd_start);
-=======
-	int length, char padding_value, char extra_d);
+		int len, char padding_value, char extra_d);
+int write_pointer(char buffer[], int ind, int len,
+		int width, int flags, char padd, char extra_c, int padding_value_start);
 int write_pointer(char buffer[], int ind, int len,
 	int width, int flags, char padding_value, char extra_d, int padding_value_start);
->>>>>>> 415af0148e98e5cdf54b09d0124e47f849d9ea3c
-
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
 	int flags, int width, int precision, int size);
-
 /****************** UTILS ******************/
 int is_outputed(char);
 int append_hexa_code(char, char[], int);
