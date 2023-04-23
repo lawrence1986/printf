@@ -79,7 +79,7 @@ int print_legible(va_list set, char buffer[],
 
 	while (s[k] != '\0')
 	{
-		if (is_printable(s[k]))
+		if (is_outputed(s[k]))
 			buffer[k + offset] = s[k];
 		else
 			offset += apppend_xd_code(s[k], buffer, k + offset);
