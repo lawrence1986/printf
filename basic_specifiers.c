@@ -66,7 +66,7 @@ int print_ptr(va_list set, char buffer[],
 int print_legible(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int k = 0, offset = 0;
+	int i = 0, offset = 0;
 	char *s = va_arg(set, char *);
 
 	UNUSED(flags);
@@ -77,19 +77,19 @@ int print_legible(va_list set, char buffer[],
 	if (s == NULL)
 		return (write(1, "(null)", 6));
 
-	while (s[k] != '\0')
+	while (s[i] != '\0')
 	{
-		if (is_outputed(s[k]))
-			buffer[k + offset] = s[k];
+		if (is_outputed(s[i]))
+			buffer[i + offset] = s[i];
 		else
-			offset += append_xd_code(s[k], buffer, k + offset);
+			offset += append_xd_code(s[i], buffer, i + offset);
 
-		k++;
+		i++;
 	}
 
-	buffer[k + offset] = '\0';
+	buffer[i + offset] = '\0';
 
-	return (write(1, buffer, k + offset));
+	return (write(1, buffer, i + offset));
 }
 /*** PRINT REVERSE ***/
 /**
@@ -107,7 +107,7 @@ int print_rev(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char *s;
-	int k, figure = 0;
+	int i, figure = 0;
 
 	UNUSED(buffer);
 	UNUSED(flags);
@@ -122,14 +122,14 @@ int print_rev(va_list set, char buffer[],
 
 		s = ")Null(";
 	}
-	for (k = 0; s[k]; k++)
+	for (i = 0; s[i]; i++)
 		;
 
-	for (k = k - 1; k >= 0; k--)
+	for (i = i - 1; i >= 0; i--)
 	{
-		char d = s[k];
+		char c = s[i];
 
-		write(1, &d, 1);
+		write(1, &c, 1);
 		figure++;
 	}
 	return (figure);
@@ -150,7 +150,7 @@ int print_rot13str(va_list set, char buffer[],
 {
 	char x;
 	char *s;
-	unsigned int k, j;
+	unsigned int i, j;
 	int figure = 0;
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
@@ -164,11 +164,11 @@ int print_rot13str(va_list set, char buffer[],
 
 	if (s == NULL)
 		s = "(AHYY)";
-	for (k = 0; s[k]; k++)
+	for (i = 0; s[i]; i++)
 	{
 		for (j = 0; in[j]; j++)
 		{
-			if (in[j] == s[k])
+			if (in[j] == s[i])
 			{
 				x = out[j];
 				write(1, &x, 1);
@@ -178,7 +178,7 @@ int print_rot13str(va_list set, char buffer[],
 		}
 		if (!in[j])
 		{
-			x = s[k];
+			x = s[i];
 			write(1, &x, 1);
 			figure++;
 		}

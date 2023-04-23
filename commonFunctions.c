@@ -8,7 +8,7 @@
  */
 int is_outputed(char d)
 {
-	if (d >= 32 && d < 127)
+	if (c >= 32 && c < 127)
 		return (1);
 
 	return (0);
@@ -21,7 +21,7 @@ int is_outputed(char d)
  * @ascii_code: ASSCI CODE.
  * Return: Always 3
  */
-int append_xd_code(char ascii_code, char buffer[], int k)
+int append_xd_code(char ascii_code, char buffer[], int i)
 {
 	char map_to[] = "0123456789ABCDEF";
 	/* The hexa format code is always 2 digits long */
@@ -43,9 +43,9 @@ int append_xd_code(char ascii_code, char buffer[], int k)
  *
  * Return: 1 if c is a digit, 0 otherwise
  */
-int is_digit(char d)
+int is_digit(char c)
 {
-	if (d >= '0' && d <= '9')
+	if (c >= '0' && c <= '9')
 		return (1);
 
 	return (0);

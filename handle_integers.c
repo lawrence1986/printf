@@ -15,9 +15,9 @@
 int print_char(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	char d = va_arg(set, int);
+	char c = va_arg(set, int);
 
-return (process_output(d, buffer, flags, width, precision, size));
+return (process_output(c, buffer, flags, width, precision, size));
 }
 /*** PRINT A STRING ***/
 /**
@@ -33,7 +33,7 @@ return (process_output(d, buffer, flags, width, precision, size));
 int print_string(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int len = 0, k;
+	int len = 0, i;
 	char *s = va_arg(set, char *);
 
 	UNUSED(buffer);
@@ -59,13 +59,13 @@ int print_string(va_list set, char buffer[],
 		if (flags & F_MINUS)
 		{
 			write(1, &s[0], len);
-			for (k = width - len; k > 0; k--)
+			for (i = width - len; i > 0; i--)
 				write(1, " ", 1);
 			return (width);
 		}
 		else
 		{
-			for (k = width - len; k > 0; k--)
+			for (i = width - len; i > 0; i--)
 				write(1, " ", 1);
 			write(1, &s[0], len);
 			return (width);
@@ -111,7 +111,7 @@ int print_percent(va_list set, char buffer[],
 int print_int(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int k = 1024 - 2;
+	int i = 1024 - 2;
 	int is_negative = 0;
 	long int n = va_arg(set, long int);
 	unsigned long int num;
@@ -119,7 +119,7 @@ int print_int(va_list set, char buffer[],
 	n = convert_size_number(n, size);
 
 	if (n == 0)
-		buffer[k--] = '0';
+		buffer[i--] = '0';
 
 	buffer[1024 - 1] = '\0';
 	num = (unsigned long int)n;
@@ -132,13 +132,13 @@ int print_int(va_list set, char buffer[],
 
 	while (num > 0)
 	{
-		buffer[k--] = (num % 10) + '0';
+		buffer[i--] = (num % 10) + '0';
 		num /= 10;
 	}
 
-	k++;
+	i++;
 
-	return (print_number(is_negative, k, buffer, flags, width, precision, size));
+	return (print_number(is_negative, i, buffer, flags, width, precision, size));
 }
 
 /*** PRINT BINARY ***/
@@ -155,7 +155,7 @@ int print_int(va_list set, char buffer[],
 int print_binary(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	unsigned int n, m, k, sum;
+	unsigned int n, m, i, sum;
 	unsigned int a[32];
 	int figure;
 
@@ -168,19 +168,19 @@ int print_binary(va_list set, char buffer[],
 	n = va_arg(set, unsigned int);
 	m = 2147483648; /* (2 ^ 31) */
 	a[0] = n / m;
-	for (k = 1; k < 32; k++)
+	for (i = 1; i < 32; i++)
 	{
 		m /= 2;
-		a[k] = (n / m) % 2;
+		a[i] = (n / m) % 2;
 	}
-	for (k = 0, sum = 0, figure = 0; k < 32; k++)
+	for (i = 0, sum = 0, figure = 0; i < 32; i++)
 	{
-		sum += a[k];
-		if (sum || k == 31)
+		sum += a[i];
+		if (sum || i == 31)
 		{
-			char z = '0' + a[k];
+			char c = '0' + a[i];
 
-			write(1, &z, 1);
+			write(1, &c, 1);
 			figure++;
 		}
 	}
