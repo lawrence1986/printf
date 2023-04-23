@@ -1,11 +1,7 @@
 #include "main.h"
 
-<<<<<<< HEAD
-/** PRINT CHAR **/
-=======
 /*** PRINT CHAR ***/
 
->>>>>>> 6f0f38015ea31f294fd4a7c37148da2b81d556e1
 /**
  * print_char - Prints a characater
  * @set: List a of arguments
@@ -21,7 +17,7 @@ int print_char(va_list set, char buffer[],
 {
 	char z = va_arg(set, int);
 
-return (handle_write_char(z, buffer, flags, width, precision, size));
+return (process_output(z, buffer, flags, width, precision, size));
 }
 /*** PRINT A STRING ***/
 /**
