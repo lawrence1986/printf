@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	int i = 0, ln = 0, output_chars = 0;
 	int flags, width, precision, size, buff_ind = 0;
 	va_list file;
-	char buffer[1024];
+	char buffer[IO_SIZE];
 
 	if (format == NULL)
 		return (-1);
@@ -22,11 +22,10 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			buffer[buff_ind++] = format[i];
-			if (buff_ind == 1024)
+			if (buff_ind == IO_SIZE)
 			{
 				print_buffer(buffer, &buff_ind);
 			}
-			/* write(1, &format[i], 1);*/
 			output_chars++;
 		}
 		else
@@ -45,11 +44,8 @@ int _printf(const char *format, ...)
 		}
 		i++;
 	}
-
 	print_buffer(buffer, &buff_ind);
-
 	va_end(file);
-
 	return (output_chars);
 }
 

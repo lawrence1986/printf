@@ -13,12 +13,12 @@
 int print_unt(va_list set, char buffer[],
 int flags, int width, int precision, int size)
 {
-int i = 1024 - 2;
+int i = IO_SIZE - 2;
 unsigned long int num = va_arg(set, unsigned long int);
 num = convert_size_unsgnd(num, size);
 if (num == 0)
 buffer[i--] = '0';
-buffer[1024 - 1] = '\0';
+buffer[IO_SIZE - 1] = '\0';
 while (num > 0)
 {
 buffer[i--] = (num % 10) + '0';
@@ -41,14 +41,14 @@ return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 int print_oct(va_list set, char buffer[],
 int flags, int width, int precision, int size)
 {
-int i = 1024 - 2;
+int i = IO_SIZE - 2;
 unsigned long int num = va_arg(set, unsigned long int);
 unsigned long int init_num = num;
 UNUSED(width);
 num = convert_size_unsgnd(num, size);
 if (num == 0)
 buffer[i--] = '0';
-buffer[1024 - 1] = '\0';
+buffer[IO_SIZE - 1] = '\0';
 while (num > 0)
 {
 buffer[i--] = (num % 8) + '0';
@@ -110,14 +110,14 @@ flags, 'X', width, precision, size));
 int print_xd(va_list set, char map_to[], char buffer[],
 int flags, char flag_ch, int width, int precision, int size)
 {
-int i = 1024 - 2;
+int i = IO_SIZE - 2;
 unsigned long int num = va_arg(set, unsigned long int);
 unsigned long int init_num = num;
 UNUSED(width);
 num = convert_size_unsgnd(num, size);
 if (num == 0)
 buffer[i--] = '0';
-buffer[1024 - 1] = '\0';
+buffer[IO_SIZE - 1] = '\0';
 while (num > 0)
 {
 buffer[i--] = map_to[num % 16];

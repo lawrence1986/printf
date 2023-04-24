@@ -28,15 +28,15 @@ int process_output(char c, char buffer[],
 
 	if (width > 1)
 
-	buffer[1024 - 1] = '\0';
+	buffer[IO_SIZE - 1] = '\0';
 		for (i = 0; i < width - 1; i++)
-		buffer[1024 - i - 2] = padding_value;
+		buffer[IO_SIZE - i - 2] = padding_value;
 
 		if (flags & F_MINUS)
 		return (write(1, &buffer[0], 1) +
-		write(1, &buffer[1024 - i - 1], width - 1));
+		write(1, &buffer[IO_SIZE - i - 1], width - 1));
 		else
-		return (write(1, &buffer[1024 - i - 1], width - 1) +
+		return (write(1, &buffer[IO_SIZE - i - 1], width - 1) +
 		write(1, &buffer[0], 1));
 
 		return (write(1, &buffer[0], 1));
@@ -57,7 +57,7 @@ int process_output(char c, char buffer[],
 	int print_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int len = 1024 - ind - 1;
+	int len = IO_SIZE - ind - 1;
 	char padding_value = ' ', extra_ch = 0;
 
 	UNUSED(size);
@@ -94,9 +94,9 @@ int process_output(char c, char buffer[],
 {
 	int i = 1, padding_value_start = 1;
 
-	if (prec == 0 && ind == 1024 - 2 && buffer[ind] == '0' && width == 0)
+	if (prec == 0 && ind == IO_SIZE - 2 && buffer[ind] == '0' && width == 0)
 	return (0);
-	if (prec == 0 && ind == 1024 - 2 && buffer[ind] == '0')
+	if (prec == 0 && ind == IO_SIZE - 2 && buffer[ind] == '0')
 	buffer[ind] = padding_value = ' ';
 	if (prec > 0 && prec < len)
 	padding_value = ' ';
@@ -148,13 +148,13 @@ int process_output(char c, char buffer[],
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int len = 1024 - ind - 1, i = 0;
+	int len = IO_SIZE - ind - 1, i = 0;
 	char padding_value = ' ';
 
 	UNUSED(is_negative);
 	UNUSED(size);
 
-	if (precision == 0 && ind == 1024 - 2 && buffer[ind] == '0')
+	if (precision == 0 && ind == IO_SIZE - 2 && buffer[ind] == '0')
 	return (0);
 
 	if (precision > 0 && precision < len)
@@ -240,5 +240,5 @@ return (write(1, &buffer[ind], len));
 buffer[--ind] = 'x', buffer[--ind] = '0';
 if (extra_c)
 	buffer[--ind] = extra_c;
-return (write(1, &buffer[ind], 1024 - ind - 1));
+return (write(1, &buffer[ind], IO_SIZE - ind - 1));
 }

@@ -111,7 +111,7 @@ int print_percent(va_list set, char buffer[],
 int print_int(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int i = 1024 - 2;
+	int i = IO_SIZE - 2;
 	int is_negative = 0;
 	long int n = va_arg(set, long int);
 	unsigned long int num;
@@ -121,7 +121,7 @@ int print_int(va_list set, char buffer[],
 	if (n == 0)
 		buffer[i--] = '0';
 
-	buffer[1024 - 1] = '\0';
+	buffer[IO_SIZE - 1] = '\0';
 	num = (unsigned long int)n;
 
 	if (n < 0)

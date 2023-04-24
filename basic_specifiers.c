@@ -15,7 +15,7 @@ int print_ptr(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
 	char extra_c = 0, padding_value = ' ';
-	int ind = 1024 - 2, len = 2, padding_value_start = 1; /* length=2, for '0x' */
+	int ind = IO_SIZE - 2, len = 2, padding_value_start = 1; /* length=2, for '0x' */
 	unsigned long num_address;
 	char map_to[] = "0123456789abcdef";
 	void *address = va_arg(set, void *);
@@ -26,7 +26,7 @@ int print_ptr(va_list set, char buffer[],
 	if (address == NULL)
 		return (write(1, "(nil)", 5));
 
-	buffer[1024 - 1] = '\0';
+	buffer[IO_SIZE - 1] = '\0';
 	UNUSED(precision);
 
 	num_address = (unsigned long)address;

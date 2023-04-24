@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string.h>
 #define UNUSED(x) (void)(x)
+#define IO_SIZE 1024
 
 /* FLAGS */
 #define F_MINUS 1

@@ -44,7 +44,7 @@ All of the following files are programs written in C:
 | ` 3. What one has not experienced, one will never understand in print
 ` | Handle the following conversion specifiers: u, o, x, X|
 | ` 4. Nothing in fine print is ever good news
-` | Use a local buffer of 1024 chars in order to call write as little as possible. |
+` | Use a local buffer of IO_SIZE chars in order to call write as little as possible. |
 | ` 5. My weakness is wearing too much leopard print
 ` | Handle the following custom conversion specifier: s – prints the string|
 | ` 6. How is the world ruled and led to war? Diplomats lie to journalists and believe these lies when they see them in print
