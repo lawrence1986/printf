@@ -79,7 +79,7 @@ int print_ptr(va_list set, char buffer[],
 /* Funciotns to handle other specifiers */
 int fetch_flags(const char *format, int *i);
 int calcStrText(const char *format, int *i, va_list file);
-int get_precision(const char *format, int *i, va_list file);
+int get_clarity(const char *format, int *i, va_list file);
 int dataSize(const char *format, int *i);
 
 /*Function to print string in reverse*/
