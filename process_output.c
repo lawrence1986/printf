@@ -3,7 +3,7 @@
 /*** WRITE HANDLE ***/
 /**
 * handle_write_char - Prints a string
-* @d: char types.
+* @c: char types.
 * @buffer: Buffer array to handle print
 * @flags:  Calculates active flags.
 * @width: get width.
@@ -12,10 +12,10 @@
 *
 * Return: Number of chars printed.
 */
-int process_output(char d, char buffer[],
+int process_output(char c, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int k = 0;
+	int i = 0;
 	char padding_value = ' ';
 
 	UNUSED(precision);
@@ -23,20 +23,20 @@ int process_output(char d, char buffer[],
 
 	if (flags & F_ZERO)
 	padding_value = '0';
-	buffer[k++] = d;
-	buffer[k] = '\0';
+	buffer[i++] = c;
+	buffer[i] = '\0';
 
 	if (width > 1)
 
 	buffer[1024 - 1] = '\0';
-		for (k = 0; k < width - 1; k++)
-		buffer[1024 - k - 2] = padding_value;
+		for (i = 0; i < width - 1; i++)
+		buffer[1024 - i - 2] = padding_value;
 
 		if (flags & F_MINUS)
 		return (write(1, &buffer[0], 1) +
-		write(1, &buffer[1024 - k - 1], width - 1));
+		write(1, &buffer[1024 - i - 1], width - 1));
 		else
-		return (write(1, &buffer[1024 - k - 1], width - 1) +
+		return (write(1, &buffer[1024 - i - 1], width - 1) +
 		write(1, &buffer[0], 1));
 
 		return (write(1, &buffer[0], 1));
@@ -84,13 +84,13 @@ int process_output(char d, char buffer[],
 * @prec: Precision specifier
 * @len: Number length
 * @padding_value: Pading char
-* @extra_d: Extra char
+* @extra_c: Extra char
 *
 * Return: Number of printed chars.
 */
 	int print_num(int ind, char buffer[],
 	int flags, int width, int prec,
-	int len, char padding_value, char extra_d)
+	int len, char padding_value, char extra_c)
 {
 	int k = 1, padding_value_start = 1;
 
@@ -104,32 +104,32 @@ int process_output(char d, char buffer[],
 	{
 		buffer[--ind] = '0', len++;
 	}
-	if (extra_d != 0)
+	if (extra_c != 0)
 	len++;
 
 	if (width > len)
 	{
-	for (k = 1; k < width - len + 1; k++)
-		buffer[k] = padding_value;
-	buffer[k] = '\0';
+	for (i = 1; i < width - len + 1; i++)
+		buffer[i] = padding_value;
+	buffer[i] = '\0';
 	if (flags & F_MINUS && padding_value == ' ')
-	if (extra_d)
-	buffer[--ind] = extra_d;
-	return (write(1, &buffer[ind], len) + write(1, &buffer[1], k - 1));
+	if (extra_c)
+	buffer[--ind] = extra_c;
+	return (write(1, &buffer[ind], len) + write(1, &buffer[1], i - 1));
 	}
 	else if (!(flags & F_MINUS) && padding_value == ' ')
 	{
-	if (extra_d)
-		buffer[--ind] = extra_d;
-	return (write(1, &buffer[1], k - 1) + write(1, &buffer[ind], len));
+	if (extra_c)
+		buffer[--ind] = extra_c;
+	return (write(1, &buffer[1], i - 1) + write(1, &buffer[ind], len));
 	}
 	else if (!(flags & F_MINUS) && padding_value == '0')
-	if (extra_d)
-	buffer[--padding_value_start] = extra_d;
-	return (write(1, &buffer[padding_value_start], k - padding_value_start) +
+	if (extra_c)
+	buffer[--padding_value_start] = extra_c;
+	return (write(1, &buffer[padding_value_start], i - padding_value_start) +
 	write(1, &buffer[ind], len - (1 - padding_value_start)));
-	if (extra_d)
-		buffer[--ind] = extra_d;
+	if (extra_c)
+		buffer[--ind] = extra_c;
 	return (write(1, &buffer[ind], len));
 }
 /**
@@ -148,7 +148,7 @@ int process_output(char d, char buffer[],
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int len = 1024 - ind - 1, k = 0;
+	int len = 1024 - ind - 1, i = 0;
 	char padding_value = ' ';
 
 	UNUSED(is_negative);
@@ -169,17 +169,17 @@ int process_output(char d, char buffer[],
 
 	if (width > len)
 {
-	for (k = 0; k < width - len; k++)
-	buffer[k] = padding_value;
-	buffer[k] = '\0';
+	for (i = 0; i < width - len; i++)
+	buffer[i] = padding_value;
+	buffer[i] = '\0';
 
 	if (flags & F_MINUS)
 	{
-	return (write(1, &buffer[ind], len) + write(1, &buffer[0], k));
+	return (write(1, &buffer[ind], len) + write(1, &buffer[0], i));
 	}
 	else
 	{
-	return (write(1, &buffer[0], k) + write(1, &buffer[ind], len));
+	return (write(1, &buffer[0], i) + write(1, &buffer[ind], len));
 	}
 }
 return (write(1, &buffer[ind], len));
@@ -192,53 +192,53 @@ return (write(1, &buffer[ind], len));
 * @width: Width specifier
 * @flags: Flags specifier
 * @padding_value: Char representing the padding
-* @extra_d: Char representing extra char
+* @extra_c: Char representing extra char
 * @padding_value_start: Index at which padding should start
 *
 * Return: Number of written chars.
 */
 	int write_pointer(char buffer[], int ind, int len,
-	int width, int flags, char padding_value, char extra_d,
+	int width, int flags, char padding_value, char extra_c,
 	int padding_value_start)
 {
-	int k = 3;
+	int i = 3;
 
 	if (width > len)
 	{
-		while (k < width - len + 3)
+		while (i < width - len + 3)
 		{
-			buffer[k] = padding_value;
-			k++;
+			buffer[i] = padding_value;
+			i++;
 		}
-		buffer[k] = '\0';
+		buffer[i] = '\0';
 	if (flags & F_MINUS && padding_value == ' ')
 	{
 		buffer[--ind] = 'x';
 		buffer[--ind] = '0';
-		if (extra_d)
+		if (extra_c)
 		{
-			buffer[--ind] = extra_d;
-			return (write(1, &buffer[ind], len) + write(1, &buffer[3], k - 3));
+			buffer[--ind] = extra_c;
+			return (write(1, &buffer[ind], len) + write(1, &buffer[3], i - 3));
 	}
 		else if (!(flags & F_MINUS) && padding_value == ' ')
 		{
 			buffer[--ind] = 'x', buffer[--ind] = '0';
 		}
-			if (extra_d)
-				buffer[--ind] = extra_d;
-			return (write(1, &buffer[3], k - 3) + write(1, &buffer[ind], len));
+			if (extra_c)
+				buffer[--ind] = extra_c;
+			return (write(1, &buffer[3], i - 3) + write(1, &buffer[ind], len));
 		}
 		else if (!(flags & F_MINUS) && padding_value == '0')
 		{
-			if (extra_d)
-				buffer[--padding_value_start] = extra_d;
+			if (extra_c)
+				buffer[--padding_value_start] = extra_c;
 			buffer[1] = '0', buffer[2] = 'x';
-			return (write(1, &buffer[padding_value_start], k - padding_value_start) +
+			return (write(1, &buffer[padding_value_start], i - padding_value_start) +
 				write(1, &buffer[ind], len - (1 - padding_value_start) - 2));
 		}
 	}
 buffer[--ind] = 'x', buffer[--ind] = '0';
-if (extra_d)
-	buffer[--ind] = extra_d;
+if (extra_c)
+	buffer[--ind] = extra_c;
 return (write(1, &buffer[ind], 1024 - ind - 1));
 }
