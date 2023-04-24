@@ -14,7 +14,7 @@
 int print_ptr(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
 {
-	char extra_d = 0, padding_value = ' ';
+	char extra_c = 0, padding_value = ' ';
 	int ind = 1024 - 2, len = 2, padding_value_start = 1; /* length=2, for '0x' */
 	unsigned long num_address;
 	char map_to[] = "0123456789abcdef";
@@ -41,15 +41,15 @@ int print_ptr(va_list set, char buffer[],
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
 		padding_value_start = '0';
 	if (flags & F_PLUS)
-		extra_d = '+', len++;
+		extra_c = '+', len++;
 	else if (flags & F_SPACE)
-		extra_d = ' ', len++;
+		extra_c = ' ', len++;
 
 	ind++;
 
 	/*return (write(1, &buffer[k], BUFF_SIZE - k - 1));*/
 	return (write_pointer(buffer, ind, len,
-		width, flags, padding_value, extra_d, padding_value_start));
+		width, flags, padding_value, extra_c, padding_value_start));
 }
 
 /*** PRINT NON PRINTABLE ***/
