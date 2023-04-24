@@ -79,7 +79,7 @@ int print_ptr(va_list set, char buffer[],
 /* Funciotns to handle other specifiers */
 int fetch_flags(const char *format, int *i);
 int calcStrText(const char *format, int *i, va_list file);
-int get_clarity(const char *format, int *i, va_list file);
+int get_precision(const char *format, int *i, va_list file);
 int dataSize(const char *format, int *i);
 
 /*Function to print string in reverse*/
@@ -98,7 +98,7 @@ int print_number(int is_positive, int ind, char buffer[],
 int print_num(int ind, char bff[], int flags, int width, int precision,
 		int len, char padding_value, char extra_c);
 int write_pointer(char buffer[], int ind, int len,
-		int width, int flags, char padd, char extra_c, int padding_value_start);
+		int width, int flags, char padding, char extra_c, int padding_value_start);
 int write_pointer(char buffer[], int ind, int len,
 	int width, int flags,
 	char padding_value, char extra_c, int padding_value_start);
