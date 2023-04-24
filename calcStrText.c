@@ -10,9 +10,8 @@
  */
 int calcStrText(const char *format, int *i, va_list file)
 {
-	int curr_i;
+	int curr_i = *i + 1;
 	int width = 0;
-curr_i = *i + 1;
 
 while (format[curr_i] != '\0')
 {
