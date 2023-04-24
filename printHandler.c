@@ -39,8 +39,8 @@ if (fmt[*ind - 1] == ' ')
 else if (width)
 {
 --(*ind);
-while (fmt[*ind] != ' ' && fmt[*ind] != '%')
-	--(*ind);
+for (; fmt[*ind] != ' ' && fmt[*ind] != '%'; --(*ind))
+	;
 if (fmt[*ind] == ' ')
 	--(*ind);
 return (1);
