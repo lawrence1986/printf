@@ -98,7 +98,7 @@ int print_number(int is_positive, int ind, char buffer[],
 int print_num(int ind, char bff[], int flags, int width, int precision,
 		int len, char padding_value, char extra_c);
 int write_pointer(char buffer[], int ind, int len,
-		int width, int flags, char padding, char extra_c, int padding_value_start);
+		int width, int flags, char padding_value, char extra_c, int padding_value_start);
 int write_pointer(char buffer[], int ind, int len,
 	int width, int flags,
 	char padding_value, char extra_c, int padding_value_start);
