@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			print_buffer(buffer, &buff_ind);
 			flags = fetch_flags(format, &i);
 			width = calcStrText(format, &i, file);
-			precision = get_clarity(format, &i, file);
+			precision = get_precision(format, &i, file);
 			size = dataSize(format, &i);
 			i++;
 			ln = printHandler(format, &i, file, buffer,
