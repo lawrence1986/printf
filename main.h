@@ -74,37 +74,37 @@ int print_legible(va_list set, char buffer[],
 
 /* Funcion to print memory address */
 int print_ptr(va_list set, char buffer[],
-	int flags, int width, int precision, int size);
+int flags, int width, int precision, int size);
 
 /* Funciotns to handle other specifiers */
 int fetch_flags(const char *format, int *i);
 int calcStrText(const char *format, int *i, va_list file);
-int get_clarity(const char *format, int *i, va_list file);
+int set_dec_precision(const char *format, int *i, va_list file);
 int dataSize(const char *format, int *i);
 
 /*Function to print string in reverse*/
 int print_rev(va_list set, char buffer[],
-	int flags, int width, int precision, int size);
+int flags, int width, int precision, int size);
 
 /*Function to print a string in rot 13*/
 int print_rot13str(va_list set, char buffer[],
-	int flags, int width, int precision, int size);
+int flags, int width, int precision, int size);
 
 /* width handler */
 int process_output(char c, char buffer[],
-	int flags, int width, int precision, int size);
+int flags, int width, int precision, int size);
 int print_number(int is_positive, int ind, char buffer[],
-	int flags, int width, int precision, int size);
+int flags, int width, int precision, int size);
 int print_num(int ind, char bff[], int flags, int width, int precision,
-		int len, char padding_value, char extra_c);
+int len, char padding_value, char extra_c);
 int write_pointer(char buffer[], int ind, int len,
-		int width, int flags, char padding_value, char extra_c, int padding_value_start);
+int width, int flags, char padding_value, char extra_c, int padding_value_start);
 int write_pointer(char buffer[], int ind, int len,
-	int width, int flags,
-	char padding_value, char extra_c, int padding_value_start);
+int width, int flags,
+char padding_value, char extra_c, int padding_value_start);
 int write_unsgnd(int is_negative, int ind,
 char buffer[],
-	int flags, int width, int precision, int size);
+int flags, int width, int precision, int size);
 /****************** UTILS ******************/
 int is_outputed(char);
 int append_xd_code(char, char[], int);

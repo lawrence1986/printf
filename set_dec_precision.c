@@ -8,7 +8,7 @@
 *
 * Return: Precision.
 */
-int get_clarity(const char *format, int *i, va_list file)
+int set_dec_precision(const char *format, int *i, va_list file)
 {
 	int curr_i = *i + 1;
 	int precision = -1;
