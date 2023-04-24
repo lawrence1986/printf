@@ -6,7 +6,7 @@
  *
  * Return: 1 if d is printable, 0 otherwise
  */
-int is_outputed(char d)
+int is_outputed(char c)
 {
 	if (c >= 32 && c < 127)
 		return (1);
@@ -28,11 +28,11 @@ int append_xd_code(char ascii_code, char buffer[], int i)
 	if (ascii_code < 0)
 		ascii_code *= -1;
 
-	buffer[k++] = '\\';
-	buffer[k++] = 'x';
+	buffer[i++] = '\\';
+	buffer[i++] = 'x';
 
-	buffer[k++] = map_to[ascii_code / 16];
-	buffer[k] = map_to[ascii_code % 16];
+	buffer[i++] = map_to[ascii_code / 16];
+	buffer[i] = map_to[ascii_code % 16];
 
 	return (3);
 }
