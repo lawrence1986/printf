@@ -40,6 +40,7 @@ typedef struct fmt fmt_t;
 int _printf(const char *format, ...);
 int printHandler(const char *fmt, int *i,
 va_list file, char buffer[], int flags, int width, int precision, int size);
+void print_buffer(char buffer[], int *buff_ind);
 
 /****************** FUNCTIONS ******************/
 
