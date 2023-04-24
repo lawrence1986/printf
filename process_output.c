@@ -92,7 +92,7 @@ int process_output(char c, char buffer[],
 	int flags, int width, int prec,
 	int len, char padding_value, char extra_c)
 {
-	int k = 1, padding_value_start = 1;
+	int i = 1, padding_value_start = 1;
 
 	if (prec == 0 && ind == 1024 - 2 && buffer[ind] == '0' && width == 0)
 	return (0);
