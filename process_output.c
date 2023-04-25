@@ -1,14 +1,14 @@
 #include "main.h"
 
-/*** WRITE HANDLE ***/
+/***PROCESS OUTPUT ***/
 /**
-* handle_write_char - Prints a string
-* @c: char types.
-* @buffer: Buffer array to handle print
-* @flags:  Calculates active flags.
-* @width: get width.
-* @precision: precision specifier
-* @size: Size specifier
+* process_output - Prints a string
+* @c: char type
+* @buffer: Buffer arr to handle print
+* @flags:  Calcs active flags.
+* @width: gets width.
+* @precision: prec
+* @size: Size spec
 *
 * Return: Number of chars printed.
 */
@@ -41,18 +41,18 @@ int process_output(char c, char buffer[],
 
 		return (write(1, &buffer[0], 1));
 }
-/*** WRITE NUMBER ***/
+/*** PRINT NUMBER ***/
 /**
-* write_number - Prints a string
-* @is_negative: Lista of arguments
-* @ind: char types.
-* @buffer: Buffer array to handle print
-* @flags:  Calculates active flags
-* @width: get width.
-* @precision: precision specifier
-* @size: Size specifier
+* print_number - Prints a str
+* @is_negative: Lists of args
+* @ind: char typ
+* @buffer: Buffer array
+* @flags:  Calcs active flags
+* @width: fetch width.
+* @precision: prec specifier
+* @size: Size spec
 *
-* Return: Number of chars printed.
+* Return: Number of chaacterss
 */
 	int print_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
@@ -76,7 +76,7 @@ int process_output(char c, char buffer[],
 }
 
 /**
-* write_num - Write a number using a bufffer
+* print_num - Write a number using a bufffer
 * @ind: Index at which the number starts on the buffer
 * @buffer: Buffer
 * @flags: Flags
@@ -133,16 +133,16 @@ int process_output(char c, char buffer[],
 	return (write(1, &buffer[ind], len));
 }
 /**
-* write_unsgnd - Writes an unsigned number
-* @is_negative: Number indicating if the num is negative
-* @ind: Index at which the number starts in the buffer
-* @buffer: Array of chars
-* @flags: Flags specifiers
-* @width: Width specifier
-* @precision: Precision specifier
+* write_unsgnd - Write unsigned no
+* @is_negative: No indicates if the num is negative
+* @ind: Index which number starts in the buffer
+* @buffer: Array of characters
+* @flags: Flags specifier
+* @width: Width spec
+* @precision: Precision spec
 * @size: Size specifier
 *
-* Return: Number of written chars.
+* Return: No written chars.
 */
 	int write_unsgnd(int is_negative, int ind,
 	char buffer[],
@@ -185,17 +185,17 @@ int process_output(char c, char buffer[],
 return (write(1, &buffer[ind], len));
 }
 /**
-* write_pointer - Write a memory address
-* @buffer: Arrays of chars
-* @ind: Index at which the number starts in the buffer
-* @len: Length of number
-* @width: Width specifier
-* @flags: Flags specifier
-* @padding_value: Char representing the padding
-* @extra_c: Char representing extra char
-* @padding_value_start: Index at which padding should start
+* write_pointer - will prodece a memory address
+* @buffer: Arrays of characters
+* @ind: Index at which number starts in the buffer
+* @len: Length of the number
+* @width: Width specifiers
+* @flags: Flags specifiers
+* @padding_value: Char reps padding
+* @extra_c: Char reps extra char
+* @padding_value_start: Index which padding should start
 *
-* Return: Number of written chars.
+* Return: No of written chars.
 */
 	int write_pointer(char buffer[], int ind, int len,
 	int width, int flags, char padding_value, char extra_c,
