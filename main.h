@@ -37,7 +37,7 @@ struct fmt
  * @fm_t: The function associated.
  */
 typedef struct fmt fmt_t;
-
+int _putchar(char c);
 int _printf(const char *format, ...);
 int printHandler(const char *fmt, int *i,
 va_list file, char buffer[], int flags, int width, int precision, int size);
@@ -100,7 +100,8 @@ int flags, int width, int precision, int size);
 int print_num(int ind, char bff[], int flags, int width, int precision,
 int len, char padding_value, char extra_c);
 int write_pointer(char buffer[], int ind, int len,
-int width, int flags, char padding_value, char extra_c, int padding_value_start);
+int width, int flags, char padding_value,
+char extra_c, int padding_value_start);
 int write_pointer(char buffer[], int ind, int len,
 int width, int flags,
 char padding_value, char extra_c, int padding_value_start);

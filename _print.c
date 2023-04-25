@@ -23,9 +23,8 @@ int _printf(const char *format, ...)
 		{
 			buffer[buff_ind++] = format[i];
 			if (buff_ind == IO_SIZE)
-			{
 				print_buffer(buffer, &buff_ind);
-			}
+
 			output_chars++;
 		}
 		else
@@ -49,8 +48,3 @@ int _printf(const char *format, ...)
 	return (output_chars);
 }
 
-/**
- * print_buffer - Prints the contents of the buffer if it exist
- * @buffer: Array of chars
- * @buff_ind: Index at which to add next char, represents the length.
- */
