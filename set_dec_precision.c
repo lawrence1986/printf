@@ -2,7 +2,7 @@
 
 /**
 * set_dec_precision - Calc
-* @format: Formatted str 
+* @format: Formatted str
 * @i: List of args printed.
 * @file: list arguments.
 *
@@ -17,7 +17,6 @@ int set_dec_precision(const char *format, int *i, va_list file)
 		return (precision);
 
 	precision = 0;
-curr_i += 1;
 
 while (format[curr_i] != '\0')
 {
@@ -25,6 +24,7 @@ if (is_digit(format[curr_i]))
 {
 precision *= 10;
 precision = precision + format[curr_i] - '0';
+curr_i++;
 }
 else if (format[curr_i] == '*')
 {
@@ -36,8 +36,6 @@ else
 {
 break;
 }
-
-curr_i++;
 }
 
 *i = curr_i - 1;
