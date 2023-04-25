@@ -1,27 +1,31 @@
 #include "main.h"
 /**
-* dataSize - Calculates the size to cast the argument
+* dataSize - Calcs size to cast the arg
 * @format: Formatted string in which to print the arguments
-* @i: List of arguments to be printed.
+* @i: List of args to be printed.
 *
-* Return: clarity
+* Return: prec
 */
 int dataSize(const char *format, int *i)
 {
-int curr_i = *i + 1;
-int size = 0;
-switch (format[curr_i])
-{
-	case '1':
+	int curr_i = *i;
+	int size = 0;
+
+	if (format[curr_i] == 'l')
+	{
 		size = S_LONG;
-		break;
-	case 'h':
+	}
+	else if (format[curr_i] == 'h')
+	{
 		size = S_SHORT;
-		break;
-	default:
+	}
+	if (size == 0)
+	{
 		*i = curr_i - 1;
-		return (size);
-}
-*i = curr_i;
+	}
+	else
+	{
+		*i = curr_i;
+	}
 return (size);
 }
