@@ -22,7 +22,7 @@ return (process_output(c, buffer, flags, width, precision, size));
 /*** PRINT A STRING ***/
 /**
  * print_string - Prints a string
- * @set: List a of arguments
+ * @set: List arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
@@ -77,13 +77,13 @@ int print_string(va_list set, char buffer[],
 /*** PRINT PERCENT SIGN ***/
 /**
  * print_percent - Prints a percent sign
- * @set: Lista of arguments
+ * @set: Lists of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
  * @precision: Precision specification
  * @size: Size specifier
- * Return: Number of chars printed
+ * Return: Number of chars to be printed
  */
 int print_percent(va_list set, char buffer[],
 	int flags, int width, int precision, int size)
@@ -100,7 +100,7 @@ int print_percent(va_list set, char buffer[],
 /*** PRINT INT ***/
 /**
  * print_int - Print int
- * @set: Lista of arguments
+ * @set: arguments list
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.
@@ -144,7 +144,7 @@ int print_int(va_list set, char buffer[],
 /*** PRINT BINARY ***/
 /**
  * print_binary - Prints an unsigned number
- * @set: Lista of arguments
+ * @set: List of arguments
  * @buffer: Buffer array to handle print
  * @flags:  Calculates active flags
  * @width: get width.

@@ -2,8 +2,8 @@
 
 /**
 * set_dec_precision - Calc
-* @format: Formatted str
-* @i: List of args printed.
+* @format: Formatted string
+* @i: List of arguements printed.
 * @file: list arguments.
 *
 * Return: (Precision)

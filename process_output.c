@@ -7,8 +7,8 @@
 * @buffer: Buffer arr to handle print
 * @flags:  Calcs active flags.
 * @width: gets width.
-* @precision: prec
-* @size: Size spec
+* @precision: prec specification
+* @size: Size specification identifier
 *
 * Return: Number of chars printed.
 */
@@ -44,15 +44,15 @@ int process_output(char c, char buffer[],
 /*** PRINT NUMBER ***/
 /**
 * print_number - Prints a str
-* @is_negative: Lists of args
-* @ind: char typ
+* @is_negative: Lists of arguements
+* @ind: char type
 * @buffer: Buffer array
 * @flags:  Calcs active flags
 * @width: fetch width.
 * @precision: prec specifier
-* @size: Size spec
+* @size: Size specification
 *
-* Return: Number of chaacterss
+* Return: Number of characters
 */
 	int print_number(int is_negative, int ind, char buffer[],
 	int flags, int width, int precision, int size)
@@ -83,7 +83,7 @@ int process_output(char c, char buffer[],
 * @width: width
 * @prec: Precision specifier
 * @len: Number length
-* @padding_value: Pading char
+* @padding_value: Padding characters
 * @extra_c: Extra char
 *
 * Return: Number of printed chars.
@@ -138,8 +138,8 @@ int process_output(char c, char buffer[],
 * @ind: Index which number starts in the buffer
 * @buffer: Array of characters
 * @flags: Flags specifier
-* @width: Width spec
-* @precision: Precision spec
+* @width: Width specification
+* @precision: Precision specification
 * @size: Size specifier
 *
 * Return: No written chars.
@@ -185,7 +185,7 @@ int process_output(char c, char buffer[],
 return (write(1, &buffer[ind], len));
 }
 /**
-* write_pointer - will prodece a memory address
+* write_pointer - will produce a memory address
 * @buffer: Arrays of characters
 * @ind: Index at which number starts in the buffer
 * @len: Length of the number
